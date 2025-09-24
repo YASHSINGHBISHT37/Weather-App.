@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { WeatherContent } from '../data/WeatherData'
-// import Loading from '../../assets/Loading'
+import Loading from '../../assets/Loading'
 import { weatherCodes } from '../../assets/WeatherCodes'
 
 const Temp = () => {
   const { data } = useContext(WeatherContent)
-  if (!data) return <h1>Temp Loading...</h1>
+  if (!data) return <Loading />
 
   const localTime = data.current_weather.time
   const dateObj = new Date(localTime)
@@ -16,14 +16,13 @@ const Temp = () => {
   })
 
   const weatherCode = data.current_weather.weathercode;
-  const condition = weatherCodes[weatherCode] || "Unknown";
+  const condition = weatherCodes[weatherCode]?.desc || "Unknown";
+  const icon = weatherCodes[weatherCode]?.icon || "clear-day";
   const feelsLike = (data.hourly.apparent_temperature[0]).toFixed(0)
 
   const temp = data.current_weather.temperature
   const maxTemp = (data.daily.temperature_2m_max[0]).toFixed(0);
   const minTemp = (data.daily.temperature_2m_min[0]).toFixed(0);
-
-
 
   return (
     <div className='w-screen h-auto flex justify-center pt-16'>
@@ -32,7 +31,7 @@ const Temp = () => {
         <div className='w-1/2 h-full flex flex-col justify-between p-5 py-3 pr-0 text-white'>
 
           <div className='leading-5'>
-            <div className="day-date opacity-70">{dayTime }</div>
+            <div className="day-date opacity-70">{dayTime}</div>
             <div className="condition font-bold">{condition}</div>
             <div className="feels flex items-center">Feels<span className='w-1 h-1 pt-1 rounded-full m-2 bg-amber-300'></span>{feelsLike}°C</div>
           </div>
@@ -44,7 +43,7 @@ const Temp = () => {
         </div>
 
         <div className='w-1/2 h-full flex justify-center items-center'>
-          <img src="weather-icons/clear-day.svg" /></div>
+          <img className='' src={`weather-icons/${icon}.svg`} alt={condition} /></div>
 
       </div>
     </div>

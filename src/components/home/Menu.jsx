@@ -7,7 +7,14 @@ function Menu() {
     const [themes, setThemes] = useState('dark')
 
     return (
-        <div className=' w-screen h-auto flex justify-center '>
+        <div className=' w-screen h-auto flex justify-center items-center'>
+            {/* <div className='Aboutt fixed z-9999 bg-amber-00 w-90 h-90 top-10 opacity-40'>
+                <h1 className='mb-1 font-bold'>About :</h1>
+                <p className='leading-4 pr-2'>This Weather App gives you real-time forecasts, sunrise & sunset details,
+                    and other useful information for your location.
+                    Built with modern technologies, it’s designed to be fast, minimal,
+                    and easy to use anywhere.</p>
+            </div> */}
             <div className='w-screen h-screen absolute top-0 bg-transparent bg-gradient-to-b from-blue-300 to-blue-900 z-[99] transition-all duration-400 ease-in-out'
                 style={{
                     opacity: active === 'menu' ? .1 : 0,

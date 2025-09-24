@@ -70,13 +70,11 @@ const Nav = ({ setCity }) => {
 
                                 return (
                                     <li key={index} className={`px-3 cursor-pointer py-0.5 flex justify-between items-center text-white/80 ${isLast ? '' : 'border-b-1 border-white/50'}`}
-
-
                                         onClick={() => {
                                             const cityName = `${city.name}, ${city.country}`
                                             setSelectedCity(cityName)
                                             setCity(cityName)
-                                            setCityInput(cityName)
+                                            setCityInput('')
                                             setSuggestions([])
                                             setActive('search')
                                         }}>
@@ -93,7 +91,10 @@ const Nav = ({ setCity }) => {
                     <div className='SearchBtn relative w-8 h-8 ml-2 flex justify-center items-center cursor-pointer pr-3'>
                         <img src="/icons/search.png" alt="search-icon" className='w-5.5 h-5.5 absolute' onClick={() => setActive('close')} style={{ display: active === 'search' ? 'block' : 'none' }} />
                         <img src="/icons/close.png" alt="close-icon" className='w-4.5 h-4.5 rounded-full border-1 p-1 border-white absolute'
-                            onClick={() => { setActive('search'); setSuggestions([]) }}
+                            onClick={() => {
+                                setActive('search')
+                                setSuggestions([])
+                            }}
                             style={{ display: active === 'close' ? 'block' : 'none' }} />
                     </div>
 

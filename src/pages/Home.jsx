@@ -8,14 +8,17 @@ import OtherDetails from '../components/home/OtherDetails'
 import WeatherData from '../components/data/WeatherData'
 import SetCity from '../assets/SetCity'
 
+// import Loading from '../assets/Loading'
+
 const Home = () => {
-  const [city, setCity] = useState('Delhi, India')
+  const [city, setCity] = useState('')
 
   return (
     // bg-transparent bg-gradient-to-b from-blue-500 to-blue-950
     <div className='relative w-screen h-auto bg-[#1a1b1a]'>
       <Nav setCity={setCity} />
 
+      {/* <Loading /> */}
       <WeatherData city={city}>
         <Temp />
         <Forcast />
@@ -23,7 +26,6 @@ const Home = () => {
         <OtherDetails />
         <Menu />
         {/* <SetCity /> */}
-
       </WeatherData>
 
     </div>

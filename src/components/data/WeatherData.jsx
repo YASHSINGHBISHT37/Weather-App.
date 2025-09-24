@@ -19,7 +19,7 @@ const WeatherData = ({ city, children }) => {
                 const lat = geo.latitude;
                 const lon = geo.longitude;
 
-                const weatherRes = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&hourly=apparent_temperature,relativehumidity_2m,cloudcover,surface_pressure,visibility`) // put the value of lat & lon, for the data
+                const weatherRes = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,weathercode&hourly=apparent_temperature,relativehumidity_2m,cloudcover,surface_pressure,visibility`) // put the value of lat & lon, for the data
                 setData(weatherRes.data)
 
             } catch (error) {
