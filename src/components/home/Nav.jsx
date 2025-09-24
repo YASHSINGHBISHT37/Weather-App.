@@ -1,0 +1,107 @@
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+
+
+const Nav = ({ setCity }) => {
+    const [active, setActive] = useState('search')
+    const [cityInput, setCityInput] = useState('')
+    const [suggestions, setSuggestions] = useState([])
+    const [selectedCity, setSelectedCity] = useState('')
+
+    useEffect(() => {
+        const deBounce = setTimeout(async () => {
+            if (!cityInput.trim()) {
+                setSuggestions([]);
+                return;
+            }
+
+            try {
+                const res = await axios.get(
+                    `https://geocoding-api.open-meteo.com/v1/search?name=${cityInput}&format=json`
+                );
+                const data = res.data.results || [];
+
+                // Sort alphabetically by country first, then by city name
+                const sortedData = data.sort((a, b) => {
+                    if (a.country === b.country) {
+                        return a.name.localeCompare(b.name);
+                    }
+                    return a.country.localeCompare(b.country);
+                })
+
+                if (cityInput === selectedCity) {
+                    setSuggestions([])
+                } else {
+                    setSuggestions(sortedData);
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
+        }, 100);
+
+        return () => clearTimeout(deBounce);
+    }, [cityInput]);
+
+
+
+    return (
+        <div className='w-screen h-auto fixed z-[999] flex justify-center backdrop-blur-[vw]'>
+
+            <nav className="Menu w-90 h-auto py-2 flex items-center rounded-b-[1vh]">
+                <Link to='/' className='flex justify-center items-center mr-2'><h1 className="w-8 h-8 pb-9 text-3xl font-bold tracking-tight text-blue-400">W</h1></Link>
+
+                <div className='SearchBar w-full flex justify-between items-center bg-[#1a1b1a]/30 rounded-full' style={{
+                    backgroundColor: active === 'search' ? 'transparent' : '',
+                    border: active === 'close' ? '1px solid rgba(255,255,255,0.4)' : '1px solid rgba(255,255,255,0)',
+                    backdropFilter: active === 'close' ? 'blur(1vh)' : ''
+                }} >
+
+                    <div className=' relative inputSearch w-full h-9 flex justify-center items-center'>
+                        <input type="text" value={cityInput} placeholder="Search by the city..." className="cityInput w-full h-full outline-none pl-3" onChange={(e) => setCityInput(e.target.value)}
+                            style={{ display: active === 'close' ? 'block' : 'none' }} />
+                        <h1 className='text-[2.4vh] px-4 py-0.5 rounded-4xl' style={{ display: active === 'search' ? 'block' : 'none' }}>{selectedCity}</h1>
+
+                        <ul className={`suggestions absolute w-80 h-auto top-12 rounded-2xl bg-[#1a1b1a]/96 backdrop-blur-3xl ${suggestions.length === 0 ? '' : 'border-1 border-white/50'}`}>
+
+                            {suggestions.map((city, index) => {
+                                const isLast = index === suggestions.length - 1
+
+                                return (
+                                    <li key={index} className={`px-3 cursor-pointer py-0.5 flex justify-between items-center text-white/80 ${isLast ? '' : 'border-b-1 border-white/50'}`}
+
+
+                                        onClick={() => {
+                                            const cityName = `${city.name}, ${city.country}`
+                                            setSelectedCity(cityName)
+                                            setCity(cityName)
+                                            setCityInput(cityName)
+                                            setSuggestions([])
+                                            setActive('search')
+                                        }}>
+
+                                        <p>{city.name}{city.admin1 ? ', ' + city.admin1 : ''} </p>
+                                        <p>{city.country}</p>
+                                    </li>
+                                )
+                            })}
+
+                        </ul>
+                    </div>
+
+                    <div className='SearchBtn relative w-8 h-8 ml-2 flex justify-center items-center cursor-pointer pr-3'>
+                        <img src="/icons/search.png" alt="search-icon" className='w-5.5 h-5.5 absolute' onClick={() => setActive('close')} style={{ display: active === 'search' ? 'block' : 'none' }} />
+                        <img src="/icons/close.png" alt="close-icon" className='w-4.5 h-4.5 rounded-full border-1 p-1 border-white absolute'
+                            onClick={() => { setActive('search'); setSuggestions([]) }}
+                            style={{ display: active === 'close' ? 'block' : 'none' }} />
+                    </div>
+
+                </div>
+            </nav >
+
+        </div >
+    )
+}
+
+export default Nav
