@@ -13,18 +13,18 @@ const SetCity = () => {
     const [district, setDistrict] = useState("")
 
     return (
-        <div className="w-screen h-screen absolute top-0 z-[9999] flex flex-col justify-end items-center bg-[#1a1b1a] py-2">
+        <div className="w-screen h-screen absolute top-0 z-[9999] flex flex-col justify-end items-center bg-[#1a1b1a] py-2 p-4">
 
-            <div className='cont w-90 bg-amber-00'>
+            <div className='cont w-full h-full bg-amber-00'>
                 
-                <div className='map bg-amber-00 pt-10'>
+                <div className='map w-full bg-amber-00 pt-10'>
                     <p class="tracking-tight leading-[2vh] text-center text-white/90 ">Find On Map</p>
 
-                    <div className='w-90 h-80 rounded-2xl flex items-center flex-col mt-2 border-1 border-white/30'></div>
+                    <div className='w-full h-80 rounded-2xl flex items-center flex-col mt-2 border-1 border-white/30'></div>
 
                 </div>
 
-                <div className='seacrhCity w-90 flex flex-col gap-2.5 mt-6'>
+                <div className='seacrhCity w-full flex flex-col gap-2.5 mt-4'>
                     <div className="bg-[#1a1b1a] w-full h-auto rounded-2xl p-2 py- flex flex-col gap-2 text-white/80 border-1 border-white/20">
                         <h1 className="text-center font-bold my-2 text-white text-[2vh]">Find Your City</h1>
                         <h1></h1>

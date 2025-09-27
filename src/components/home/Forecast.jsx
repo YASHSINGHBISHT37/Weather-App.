@@ -16,8 +16,8 @@ const Forcast = () => {
     const dailyWeatherCode = data.daily.weathercode;
 
     return (
-        <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3'>
-            <Swiper slidesPerView={'auto'} spaceBetween={6} freeMode={true} modules={[FreeMode]} className="mySwiper forecast-con bg w-90 h-36 bg-[#1a1b1a] rounded-2xl !p-1 border- border-white/30">
+        <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3 px-4'>
+            <Swiper slidesPerView={'auto'} spaceBetween={6} freeMode={true} modules={[FreeMode]} className="mySwiper forecast-con bg w-full h-36 bg-[#1a1b1a] rounded-2xl !p-1 border- border-white/30">
 
                 {days.map((date, index) => {
                     const maxTemp = data.daily.temperature_2m_max[index].toFixed(0);

@@ -47,12 +47,12 @@ const Nav = ({ setCity }) => {
 
 
     return (
-        <div className='w-screen h-auto fixed z-[999] flex justify-center backdrop-blur-[vw]'>
+        <div className='w-screen h-auto fixed z-[999] flex justify-center backdrop-blur-[vw] px-4'>
 
-            <nav className="Menu w-90 h-auto py-2 flex items-center rounded-b-[1vh]">
+            <nav className="Menu w-full h-auto py-2 flex justify-between items-center rounded-b-[1vh]">
                 <Link to='/' className='flex justify-center items-center mr-2'><h1 className="w-8 h-8 pb-9 text-3xl font-bold tracking-tight text-blue-400">W</h1></Link>
 
-                <div className='SearchBar w-full flex justify-between items-center bg-[#1a1b1a]/30 rounded-full' style={{
+                <div className='SearchBar w-full md:w-90 lg:w-90 flex justify-between items-center bg-[#1a1b1a]/30 rounded-full' style={{
                     backgroundColor: active === 'search' ? 'transparent' : '',
                     border: active === 'close' ? '1px solid rgba(255,255,255,0.4)' : '1px solid rgba(255,255,255,0)',
                     backdropFilter: active === 'close' ? 'blur(1vh)' : ''
@@ -61,9 +61,10 @@ const Nav = ({ setCity }) => {
                     <div className=' relative inputSearch w-full h-9 flex justify-center items-center'>
                         <input type="text" value={cityInput} placeholder="Search by the city..." className="cityInput w-full h-full outline-none pl-3" onChange={(e) => setCityInput(e.target.value)}
                             style={{ display: active === 'close' ? 'block' : 'none' }} />
+                            
                         <h1 className='text-[2.4vh] px-4 py-0.5 rounded-4xl' style={{ display: active === 'search' ? 'block' : 'none' }}>{selectedCity}</h1>
 
-                        <ul className={`suggestions absolute w-80 h-auto top-12 rounded-2xl bg-[#1a1b1a]/96 backdrop-blur-3xl ${suggestions.length === 0 ? '' : 'border-1 border-white/50'}`}>
+                        <ul className={`suggestions absolute w-full h-auto top-12 rounded-2xl bg-[#1a1b1a]/96 backdrop-blur-3xl ${suggestions.length === 0 ? '' : 'border-1 border-white/50'}`}>
 
                             {suggestions.map((city, index) => {
                                 const isLast = index === suggestions.length - 1

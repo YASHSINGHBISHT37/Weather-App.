@@ -25,8 +25,9 @@ const Temp = () => {
   const minTemp = (data.daily.temperature_2m_min[0]).toFixed(0);
 
   return (
-    <div className='w-screen h-auto flex justify-center pt-16'>
-      <div className='w-90 h-50 bg-transparent bg-gradient-to-b to-blue-400 from-[#1a1b1a] rounded-2xl flex justify-between items-center border- border-white/30'>
+    <div className='w-screen h-auto flex justify-center pt-16 px-4'>
+
+      <div className='w-full h-56 bg-transparent bg-gradient-to-b to-blue-400 from-[#1a1b1a] rounded-2xl flex justify-between items-center border- border-white/30'>
 
         <div className='w-1/2 h-full flex flex-col justify-between p-5 py-3 pr-0 text-white'>
 
@@ -42,10 +43,12 @@ const Temp = () => {
           </div>
         </div>
 
-        <div className='w-1/2 h-full flex justify-center items-center'>
-          <img className='' src={`weather-icons/${icon}.svg`} alt={condition} /></div>
+        <div className='w-1/2 h-full flex justify-end items-center'>
+          <img className='h-full' src={`weather-icons/${icon}.svg`} alt={condition} />
+        </div>
 
       </div>
+
     </div>
   )
 }

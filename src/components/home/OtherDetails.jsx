@@ -14,8 +14,8 @@ const OtherDetails = () => {
   const visibility = (data.hourly.visibility[0] / 1000).toFixed(0)
 
   return (
-    <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3 mb-18'>
-      <div className='w-90 h-54 bg-transparent bg-gradient-to-b from-blue-400 to-[#1a1b1a] rounded-2xl flex flex-wrap justify-between items-cnter pb- border- border-white/30 p-2'>
+    <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3 mb-18 px-4'>
+      <div className='w-full h-54 bg-transparent bg-gradient-to-b from-blue-400 to-[#1a1b1a] rounded-2xl flex flex-wrap justify-between items-cnter pb- border- border-white/30 p-2'>
         <div className='bg-[#1a1b1a]/0 w-full rounded-2xl flex flex-col justify-between gap-1 '>
 
           <div className='w-full h-full flex justify-between items-center gap-1'>
