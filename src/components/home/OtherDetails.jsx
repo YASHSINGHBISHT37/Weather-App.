@@ -29,7 +29,7 @@ const OtherDetails = () => {
             </div> */}
 
             <div className='w-1/3 h-full flex flex-col justify-center items-center leading-4 border-1 border-white/20 bg-[#1a1b1a] rounded-2xl'>
-              <img src="weather-icons/thermometer.svg" className='w-10 h-10' />
+              <img src="weather-icons/wind.svg" className='w-10 h-10' />
               <p>{wind} <span className='opacity-80 text-[1.6vh]'>km/h</span></p>
               <p className='font-bold text-[1.6vh] opacity-50'>Wind</p>
             </div>
