@@ -14,8 +14,8 @@ const OtherDetails = () => {
   const visibility = (data.hourly.visibility[0] / 1000).toFixed(0)
 
   return (
-    <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3 mb-18 px-4'>
-      <div className='w-full h-54 bg-transparent bg-gradient-to-b from-blue-400 to-[#1a1b1a] rounded-2xl flex flex-wrap justify-between items-cnter pb- border- border-white/30 p-2'>
+    <div className='w-screen h-auto flex justify-center bg-amber-00 mt-3 mb-18 px-2'>
+      <div className='w-full h-54 bg-transparent bg-gradient-to-b from-blue-400 to-[#1a1b1a] rounded-2xl flex flex-wrap justify-between items-cnter pb- border- border-white/30 p-1'>
         <div className='bg-[#1a1b1a]/0 w-full rounded-2xl flex flex-col justify-between gap-1 '>
 
           <div className='w-full h-full flex justify-between items-center gap-1'>
@@ -29,7 +29,7 @@ const OtherDetails = () => {
             </div> */}
 
             <div className='w-1/3 h-full flex flex-col justify-center items-center leading-4 border-1 border-white/20 bg-[#1a1b1a] rounded-2xl'>
-              <img src="weather-icons/thermometer.svg" className='w-10 h-10' />
+              <img src="weather-icons/wind.svg" className='w-10 h-10' />
               <p>{wind} <span className='opacity-80 text-[1.6vh]'>km/h</span></p>
               <p className='font-bold text-[1.6vh] opacity-50'>Wind</p>
             </div>

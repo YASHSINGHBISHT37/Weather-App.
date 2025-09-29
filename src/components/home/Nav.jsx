@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
@@ -8,6 +8,13 @@ const Nav = ({ setCity }) => {
     const [cityInput, setCityInput] = useState('')
     const [suggestions, setSuggestions] = useState([])
     const [selectedCity, setSelectedCity] = useState('')
+    const inputRaf = useRef(null)
+
+    useEffect(() => {
+        if(active === 'close') {
+            inputRaf.current.focus()
+        }
+    })
 
     useEffect(() => {
         const deBounce = setTimeout(async () => {
@@ -44,8 +51,6 @@ const Nav = ({ setCity }) => {
         return () => clearTimeout(deBounce);
     }, [cityInput]);
 
-
-
     return (
         <div className='w-screen h-auto fixed z-[999] flex justify-center backdrop-blur-[vw] px-4'>
 
@@ -59,9 +64,9 @@ const Nav = ({ setCity }) => {
                 }} >
 
                     <div className=' relative inputSearch w-full h-9 flex justify-center items-center'>
-                        <input type="text" value={cityInput} placeholder="Search by the city..." className="cityInput w-full h-full outline-none pl-3" onChange={(e) => setCityInput(e.target.value)}
+                        <input ref={inputRaf} type="text" value={cityInput} placeholder="Search by the city..." className="cityInput w-full h-full outline-none pl-3" onChange={(e) => setCityInput(e.target.value)}
                             style={{ display: active === 'close' ? 'block' : 'none' }} />
-                            
+
                         <h1 className='text-[2.4vh] px-4 py-0.5 rounded-4xl' style={{ display: active === 'search' ? 'block' : 'none' }}>{selectedCity}</h1>
 
                         <ul className={`suggestions absolute w-full h-auto top-12 rounded-2xl bg-[#1a1b1a]/96 backdrop-blur-3xl ${suggestions.length === 0 ? '' : 'border-1 border-white/50'}`}>

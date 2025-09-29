@@ -20,7 +20,7 @@ const SunUpDown = () => {
 
 
     return (
-        <div className='w-screen h-auto flex justify-center pt-3 px-4'>
+        <div className='w-screen h-auto flex justify-center pt-3 px-2'>
             <div className='w-full h-18 bg-[#1a1b1a] rounded-2xl p-1 border-1 border-white/30'>
                 <div className='w-full h-full flex justify-between items-center px-4 pr-2 py-5 rounded-[2h] '>
                     <div className='sunrise flex justify-between items-center'>

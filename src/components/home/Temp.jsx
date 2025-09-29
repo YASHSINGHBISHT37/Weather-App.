@@ -25,7 +25,7 @@ const Temp = () => {
   const minTemp = (data.daily.temperature_2m_min[0]).toFixed(0);
 
   return (
-    <div className='w-screen h-auto flex justify-center pt-16 px-4'>
+    <div className='w-screen h-auto flex justify-center pt-16 px-2'>
 
       <div className='w-full h-56 bg-transparent bg-gradient-to-b to-blue-400 from-[#1a1b1a] rounded-2xl flex justify-between items-center border- border-white/30'>
 
@@ -38,13 +38,13 @@ const Temp = () => {
           </div>
 
           <div>
-            <div className="temp text-[5vh] font-bold leading-9.5">{temp}°C</div>
+            <div className="temp text-[6vh] font-bold leading-13">{temp}°C</div>
             <div className="max-min opacity-60">{maxTemp}°C / {minTemp}°C</div>
           </div>
         </div>
 
-        <div className='w-1/2 h-full flex justify-end items-center'>
-          <img className='h-full' src={`weather-icons/${icon}.svg`} alt={condition} />
+        <div className='w-auto h-full flex justify-end items-center'>
+          <img className='h-full w-70' src={`weather-icons/${icon}.svg`} alt={condition} />
         </div>
 
       </div>

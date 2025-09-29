@@ -7,7 +7,7 @@ function Menu() {
     return (
         <div className='w-screen h-auto flex justify-center items-center'>
 
-            <div className={`w-78 h-13 z-[9999] rounded-full  backdrop-blur-3xl fixed bottom-3 flex justify-between items-center border-1 border-white/30`}
+            <div className={`w-78 h-13 z-[9999] rounded-full  backdrop-blur-3xl bg-amber-300 fixed bottom-2 flex justify-between items-center border-1 border-white/30`}
                 style={{ backgroundColor: active === 'menu' ? '#1a1b1a' : active === 'themes' ? '#1a1b1a' : 'transparent' }}>
 
                 <div className={`highLight absolute right-2 w-24 h-9 rounded-full bg-blue-400 transition-all duration-300 ease-in-out `}
@@ -23,20 +23,28 @@ function Menu() {
                 {/* <div className='w-0.5 h-full bg-white/50 rounded-2xl'></div> */}
 
                 <div className='Menu relative flex justify-center items-center w-full cursor-pointer' onClick={() => setActive('menu')}>
-                    <div className="menu w-3 h-[1vh] gap-0.5 flex flex-col cursor-pointer mr-2">
+                    {/* <div className="menu w-3 h-[1vh] gap-0.5 flex flex-col cursor-pointer mr-2">
                         <div className='bar w-auto h-1/3 rounded-full transition-colors duration-300 bg-white'></div>
                         <div className='bar w-auto h-1/3 rounded-full transition-colors duration-300 bg-white'></div>
                         <div className='bar w-auto h-1/3 rounded-full transition-colors duration-300 bg-white'></div>
-                    </div>
-                    <p className='text-1xl'>Menu</p>
+                    </div> */}
+                    <p className='text-1xl'>Cities</p>
                 </div>
 
                 {/* <div className='w-0.5 h-full bg-white/50 rounded-2xl'></div> */}
 
 
+                {/* <div className='Settings relative flex justify-center items-center w-full cursor-pointer' onClick={() => setActive('themes')}>
+                    <div className='w-4 h-4 relative m-0.5 pt-0.5'>
+                        <img src="icons/dark.png" className='w-3.5 h-3.5 absolute' />
+                        <img src="icons/light.png" className='w-3.5 h-3.5 absolute' />
+                    </div>
+                    <p className='text-1xl pr-1'>Settings</p>
+                </div> */}
+
                 <div className='Settings relative flex justify-center items-center w-full cursor-pointer' onClick={() => setActive('themes')}>
                     <div className='w-4 h-4 relative m-0.5 pt-0.5'>
-                        {/* <img src="icons/dark.png" className='w-3.5 h-3.5 absolute' /> */}
+                        <img src="icons/dark.png" className='w-3.5 h-3.5 absolute' />
                         <img src="icons/light.png" className='w-3.5 h-3.5 absolute' />
                     </div>
                     <p className='text-1xl pr-1'>Settings</p>
